@@ -1,9 +1,6 @@
 [core]
-    # Use the commit message template
-    commitTemplate = .gitmessage
-    
     # Set the default branch name
-    defaultBranch = main
+    defaultBranch = dev
     
     # Configure line ending handling
     autocrlf = input
