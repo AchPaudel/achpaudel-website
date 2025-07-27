@@ -3,7 +3,7 @@ spring:
     name: achpaudel-website-backend
   
   profiles:
-    active: dev
+    active: production
   
   security:
     user:
