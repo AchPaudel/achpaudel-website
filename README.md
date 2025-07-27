@@ -66,18 +66,20 @@ achpaudel-website/
 
 ## 🚀 Quick Start
 
+For detailed setup instructions, see the [Quick Start Guide](QUICK_START.md).
+
 ### Prerequisites
 - Java 17
 - Node.js 18+
 - Docker & Docker Compose
 - Git
 
-### Local Development
+### Quick Setup with Docker
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/AchyutDevSite.git
-   cd AchyutDevSite
+   git clone https://github.com/yourusername/achpaudel-website.git
+   cd achpaudel-website
    ```
 
 2. **Start with Docker Compose**
@@ -97,6 +99,7 @@ achpaudel-website/
 #### Backend
 ```bash
 cd backend
+./mvnw clean install
 ./mvnw spring-boot:run
 ```
 

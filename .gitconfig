@@ -1,0 +1,202 @@
+[core]
+    # Use the commit message template
+    commitTemplate = .gitmessage
+    
+    # Set the default branch name
+    defaultBranch = main
+    
+    # Configure line ending handling
+    autocrlf = input
+    eol = lf
+    
+    # Exclude files from git status
+    excludesfile = ~/.gitignore_global
+
+[init]
+    # Set the default branch name for new repositories
+    defaultBranch = main
+
+[user]
+    # These will be overridden by your global config
+    # name = Your Name
+    # email = your.email@example.com
+
+[color]
+    # Enable colored output
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[push]
+    # Set the default push behavior
+    default = simple
+    
+    # Automatically set upstream when pushing
+    autoSetupRemote = true
+
+[pull]
+    # Set the default pull behavior
+    rebase = false
+
+[merge]
+    
+    # Set the default merge tool
+    tool = vimdiff
+
+[log]
+    # Configure log output
+    decorate = auto
+    abbrevCommit = true
+    
+    # Show graph in log
+    graph = true
+    
+    # Show one line per commit
+    oneline = true
+
+[alias]
+    # Useful aliases
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    ca = commit -a
+    cm = commit -m
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    visual = !gitk
+    
+    # Show commit history with graph
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    
+    # Show files that have been changed
+    changed = diff --name-only
+    
+    # Show files that are staged
+    staged = diff --cached --name-only
+    
+    # Show files that are not staged
+    unstaged = diff --name-only
+    
+    # Show files that are untracked
+    untracked = ls-files --others --exclude-standard
+    
+    # Show commit history for a specific file
+    filelog = log --follow
+    
+    # Show commit history with patches
+    patchlog = log -p
+    
+    # Show commit history with stats
+    statlog = log --stat
+    
+    # Show commit history with graph and stats
+    graphlog = log --graph --stat --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    
+    # Show commit history for current branch
+    branchlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+    
+    # Show commit history for all branches
+    alllog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+    
+    # Show commit history for a specific author
+    authorlog = log --author
+    
+    # Show commit history for a specific date range
+    datelog = log --since --until
+    
+    # Show commit history for a specific file
+    filelog = log --follow
+    
+    # Show commit history with patches
+    patchlog = log -p
+    
+    # Show commit history with stats
+    statlog = log --stat
+    
+    # Show commit history with graph and stats
+    graphlog = log --graph --stat --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    
+    # Show commit history for current branch
+    branchlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+    
+    # Show commit history for all branches
+    alllog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+    
+    # Show commit history for a specific author
+    authorlog = log --author
+    
+    # Show commit history for a specific date range
+    datelog = log --since --until
+    
+    # Show commit history for a specific file
+    filelog = log --follow
+    
+    # Show commit history with patches
+    patchlog = log -p
+    
+    # Show commit history with stats
+    statlog = log --stat
+    
+    # Show commit history with graph and stats
+    graphlog = log --graph --stat --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    
+    # Show commit history for current branch
+    branchlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+    
+    # Show commit history for all branches
+    alllog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+    
+    # Show commit history for a specific author
+    authorlog = log --author
+    
+    # Show commit history for a specific date range
+    datelog = log --since --until
+
+[filter "lfs"]
+    # Git LFS configuration
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[help]
+    # Configure help behavior
+    autocorrect = 1
+
+[rebase]
+    # Configure rebase behavior
+    autoStash = true
+
+[rerere]
+    # Enable rerere for conflict resolution
+    enabled = true
+
+[submodule]
+    # Configure submodule behavior
+    recurse = true
+
+[url "https://github.com/"]
+    # Configure GitHub URL behavior
+    insteadOf = git@github.com:
+
+[url "https://github.com/AchPaudel/"]
+    # Configure your specific GitHub URL behavior
+    insteadOf = git@github.com:achpaudel/ 
