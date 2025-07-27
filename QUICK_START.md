@@ -162,9 +162,9 @@ docker-compose down
 
 ### 2. Access Services
 
-- **Frontend**: http://localhost:4200
+- **Frontend**: http://localhost:4201
 - **Backend API**: http://localhost:8081
-- **Jenkins**: http://localhost:8080
+- **Jenkins**: http://localhost:8082
 - **Database**: localhost:5432
 - **Nginx**: http://localhost:80
 

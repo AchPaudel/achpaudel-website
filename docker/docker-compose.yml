@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     container_name: achpaudel-frontend
     ports:
-      - "4200:80"
+      - "4201:80"
     depends_on:
       - backend
     networks:
@@ -74,7 +74,7 @@ services:
     image: jenkins/jenkins:lts-jdk17
     container_name: achpaudel-jenkins
     ports:
-      - "8080:8080"
+      - "8082:8080"
       - "50000:50000"
     volumes:
       - jenkins_data:/var/jenkins_home

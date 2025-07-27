@@ -89,9 +89,9 @@ For detailed setup instructions, see the [Quick Start Guide](QUICK_START.md).
    ```
 
 3. **Access the applications**
-   - Frontend: http://localhost:4200
+   - Frontend: http://localhost:4201
    - Backend API: http://localhost:8081
-   - Jenkins: http://localhost:8080
+   - Jenkins: http://localhost:8082
    - Database: localhost:5432
 
 ### Manual Setup
