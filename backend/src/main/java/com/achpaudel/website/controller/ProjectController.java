@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/test")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api")
 @Tag(name = "Projects", description = "Project management APIs")
 public class ProjectController {
 
-  @GetMapping("")
+  @GetMapping("/testString")
   @Operation(summary = "test api", description = "")
   public ResponseEntity<String> getAllProjects() {
     return ResponseEntity.ok("Hello Test World.");

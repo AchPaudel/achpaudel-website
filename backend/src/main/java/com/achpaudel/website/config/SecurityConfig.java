@@ -21,9 +21,11 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
-                // Allow public access to API endpoints
+                // Allow public access to all API endpoints
+                .requestMatchers("/api/**").permitAll()
                 .requestMatchers("/api/projects/**").permitAll()
                 .requestMatchers("/api/health/**").permitAll()
+                .requestMatchers("/api/test/**").permitAll()
                 .requestMatchers("/swagger-ui/**").permitAll()
                 .requestMatchers("/api-docs/**").permitAll()
                 .requestMatchers("/actuator/**").permitAll()
