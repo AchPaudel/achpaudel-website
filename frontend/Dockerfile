@@ -22,7 +22,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist/* /usr/share/nginx/html/
 
 # Copy nginx configuration
-COPY /home/ubuntu/achpaudel-website/docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ../docker/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Expose port
 EXPOSE 80
