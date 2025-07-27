@@ -1,23 +1,6 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database
-  db:
-    image: postgres:15-alpine
-    container_name: achpaudel-db
-    environment:
-      POSTGRES_DB: achpaudel_website
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: your_secure_password
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-    networks:
-      - achpaudel-network
-    restart: unless-stopped
-
   # Spring Boot Backend
   backend:
     build:
@@ -29,7 +12,6 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=production
     depends_on:
-      - db
     networks:
       - achpaudel-network
     restart: unless-stopped
