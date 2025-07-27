@@ -1,6 +1,23 @@
 version: '3.8'
 
 services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: achpaudel-db
+    environment:
+      POSTGRES_DB: achpaudel_website
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_secure_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - achpaudel-network
+    restart: unless-stopped
+
   # Spring Boot Backend
   backend:
     build:
@@ -11,9 +28,6 @@ services:
       - "8081:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=production
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/achpaudel_website
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=your_secure_password
     depends_on:
       - db
     networks:
@@ -30,23 +44,6 @@ services:
       - "4200:80"
     depends_on:
       - backend
-    networks:
-      - achpaudel-network
-    restart: unless-stopped
-
-  # PostgreSQL Database
-  db:
-    image: postgres:15-alpine
-    container_name: achpaudel-db
-    environment:
-      - POSTGRES_DB=achpaudel_website
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=your_secure_password
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-    ports:
-      - "5432:5432"
     networks:
       - achpaudel-network
     restart: unless-stopped
@@ -68,22 +65,7 @@ services:
       - achpaudel-network
     restart: unless-stopped
 
-  # Jenkins CI/CD
-  jenkins:
-    image: jenkins/jenkins:lts-jdk17
-    container_name: achpaudel-jenkins
-    ports:
-      - "50000:50000"
-    volumes:
-      - jenkins_data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - JENKINS_OPTS="--prefix=/jenkins"
-    networks:
-      - achpaudel-network
-    restart: unless-stopped
-
-  # Redis Cache (Optional)
+  # Redis Cache
   redis:
     image: redis:7-alpine
     container_name: achpaudel-redis
@@ -97,7 +79,6 @@ services:
 
 volumes:
   postgres_data:
-  jenkins_data:
   redis_data:
 
 networks:
