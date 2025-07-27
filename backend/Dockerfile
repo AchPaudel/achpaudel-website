@@ -25,7 +25,7 @@ RUN chown -R javauser:javauser /app
 USER javauser
 
 # Expose port
-EXPOSE 8080
+EXPOSE 8081
 
 # Run the application
 CMD ["java", "-jar", "target/website-backend-1.0.0.jar"] 
