@@ -16,7 +16,7 @@ import java.util.List;
 @Tag(name = "Projects", description = "Project management APIs")
 public class ProjectController {
 
-  @GetMapping('')
+  @GetMapping("")
   @Operation(summary = "test api", description = "")
   public ResponseEntity<String> getAllProjects() {
     return ResponseEntity.ok("Hello Test World.");
