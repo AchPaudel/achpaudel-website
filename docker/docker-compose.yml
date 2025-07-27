@@ -29,7 +29,7 @@ services:
       dockerfile: Dockerfile
     container_name: achpaudel-backend
     ports: 
-      - "8080:8080"
+      - "8080:8081"
     environment:
       - SPRING_PROFILES_ACTIVE=production
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB:-achpaudel_website}
@@ -40,9 +40,6 @@ services:
       - LOGGING_LEVEL_COM_ACHPUDEL_WEBSITE=INFO
       - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=WARN
       - LOGGING_LEVEL_ORG_HIBERNATE_SQL=WARN
-    depends_on:
-      db:
-        condition: service_healthy
     networks:
       - achpaudel-network
     restart: unless-stopped
