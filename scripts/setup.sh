@@ -64,17 +64,6 @@ print_header "Setting up SSL Certificates"
 # Create SSL directory
 mkdir -p ssl
 
-# Generate self-signed certificate for development
-if [ ! -f "ssl/achpaudel.dev.crt" ] || [ ! -f "ssl/achpaudel.dev.key" ]; then
-    print_status "Generating self-signed SSL certificate for development..."
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-        -keyout ssl/achpaudel.dev.key \
-        -out ssl/achpaudel.dev.crt \
-        -subj "/C=US/ST=State/L=City/O=Achyut Paudel/CN=achpaudel.dev"
-    print_status "✅ SSL certificate generated"
-else
-    print_status "✅ SSL certificates already exist"
-fi
 
 print_header "Building and Starting Services"
 

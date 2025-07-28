@@ -25,6 +25,11 @@ COPY --from=build /app/dist/achpaudel-website /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
+# Copy SSL certificates
+COPY ssl/bundle.crt /etc/nginx/ssl/bundle.crt
+COPY ssl/www_achpaudel_dev.key /etc/nginx/ssl/www_achpaudel_dev.key
+
+
 # Expose ports
 EXPOSE 80 443
 

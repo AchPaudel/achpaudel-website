@@ -30,7 +30,7 @@ print_status "Creating SSL directory..."
 mkdir -p ssl
 
 # Check if certificates already exist
-if [ -f "ssl/achpaudel.dev.crt" ] && [ -f "ssl/achpaudel.dev.key" ]; then
+if [ -f "ssl/bundle.crt" ] && [ -f "ssl/www_achpaudel_dev" ]; then
     print_warning "SSL certificates already exist."
     read -p "Do you want to regenerate them? (y/N): " -n 1 -r
     echo
@@ -54,8 +54,8 @@ if [[ $REPLY =~ ^[1]$ ]]; then
     print_status "Generating self-signed certificate..."
     
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-        -keyout ssl/achpaudel.dev.key \
-        -out ssl/achpaudel.dev.crt \
+        -keyout ssl/www_achpaudel_dev \
+        -out ssl/bundle.crt \
         -subj "/C=US/ST=State/L=City/O=Achyut Paudel/CN=achpaudel.dev"
     
     print_status "✅ Self-signed certificate generated successfully!"
@@ -82,13 +82,13 @@ elif [[ $REPLY =~ ^[2]$ ]]; then
     
     # Copy certificates
     print_status "Copying certificates..."
-    sudo cp /etc/letsencrypt/live/achpaudel.dev/fullchain.pem ssl/achpaudel.dev.crt
-    sudo cp /etc/letsencrypt/live/achpaudel.dev/privkey.pem ssl/achpaudel.dev.key
+    sudo cp /etc/letsencrypt/live/achpaudel.dev/fullchain.pem ssl/bundle.crt
+    sudo cp /etc/letsencrypt/live/achpaudel.dev/privkey.pem ssl/www_achpaudel_dev
     
     # Set proper permissions
-    sudo chown $USER:$USER ssl/achpaudel.dev.crt ssl/achpaudel.dev.key
-    chmod 600 ssl/achpaudel.dev.key
-    chmod 644 ssl/achpaudel.dev.crt
+    sudo chown $USER:$USER ssl/bundle.crt ssl/www_achpaudel_dev
+    chmod 600 ssl/www_achpaudel_dev.key
+    chmod 644 ssl/bundle.crt
     
     # Restart nginx
     print_status "Restarting nginx..."

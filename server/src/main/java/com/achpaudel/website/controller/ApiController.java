@@ -16,7 +16,7 @@ import java.util.Map;
 @Tag(name = "API", description = "REST API endpoints")
 public class ApiController {
 
-    @Autowired
+    @Autowired(required = false)
     private ExternalApiService externalApiService;
 
     @GetMapping("/health")
