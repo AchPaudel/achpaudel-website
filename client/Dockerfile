@@ -7,7 +7,7 @@ WORKDIR /app
 COPY client/package*.json ./
 
 # Install dependencies
-RUN npm install --omit=dev
+RUN npm install --omit=dev --force --legacy-peer-deps
 
 # Copy source code
 COPY client/ .
