@@ -22,7 +22,7 @@ services:
       dockerfile: client/Dockerfile
     container_name: achpaudel-frontend
     ports:
-      - "8080:80"
+      - "4200:80"
       - "8443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
