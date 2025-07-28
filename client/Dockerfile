@@ -1,13 +1,13 @@
 # Build stage
-FROM node:18-alpine as build
+FROM node:18 as build
 
 WORKDIR /app
 
 # Copy package files
 COPY client/package*.json ./
 
-# Install dependencies
-RUN npm install --omit=dev
+# Install dependencies with legacy peer deps to handle Angular dependencies
+RUN npm install --omit=dev --legacy-peer-deps
 
 # Copy source code
 COPY client/ .
